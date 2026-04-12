@@ -15,11 +15,11 @@ public class ApiResponseService {
                 .build();
     }
 
-    public ApiResponse<?> fail(ExceptionCode errorCode) {
+    public ApiResponse<?> fail(ExceptionCode exceptionCode) {
         return ApiResponse.builder()
                 .isSuccess(false)
-                .code(errorCode.getCode())
-                .message(errorCode.getMessage())
+                .code(exceptionCode.getCode())
+                .message(exceptionCode.getMessage())
                 .data(null)
                 .build();
     }
