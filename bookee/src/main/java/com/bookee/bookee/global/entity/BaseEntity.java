@@ -26,5 +26,5 @@ public abstract class BaseEntity {
 
     private Long updatedBy;
 
-    private Boolean isDeleted;
+    private Boolean isDeleted = false;
 }
