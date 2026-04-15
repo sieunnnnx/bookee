@@ -1,7 +1,7 @@
-package com.bookee.bookee.global.config.exception;
+package com.bookee.bookee.global.exception;
 
-import com.bookee.bookee.global.config.api.ApiResponse;
-import com.bookee.bookee.global.config.api.ApiResponseService;
+import com.bookee.bookee.global.api.ApiResponse;
+import com.bookee.bookee.global.api.ApiResponseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

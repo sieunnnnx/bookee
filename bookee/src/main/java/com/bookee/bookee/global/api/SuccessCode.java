@@ -1,4 +1,4 @@
-package com.bookee.bookee.global.config.api;
+package com.bookee.bookee.global.api;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
