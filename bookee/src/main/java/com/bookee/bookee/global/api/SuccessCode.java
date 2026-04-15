@@ -4,7 +4,7 @@ import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 @Getter
-public enum SuccessCode {
+public enum SuccessCode implements BaseCode{
 
     SUCCESS("00", "응답에 성공했습니다.");
 

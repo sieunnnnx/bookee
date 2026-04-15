@@ -1,6 +1,5 @@
 package com.bookee.bookee.global.api;
 
-import com.bookee.bookee.global.exception.ExceptionCode;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,11 +14,11 @@ public class ApiResponseService {
                 .build();
     }
 
-    public ApiResponse<?> fail(ExceptionCode exceptionCode) {
+    public ApiResponse<?> fail(BaseCode baseCode) {
         return ApiResponse.builder()
                 .isSuccess(false)
-                .code(exceptionCode.getCode())
-                .message(exceptionCode.getMessage())
+                .code(baseCode.getCode())
+                .message(baseCode.getMessage())
                 .data(null)
                 .build();
     }
