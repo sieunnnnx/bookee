@@ -1,6 +1,6 @@
-package com.bookee.bookee.global.config.api;
+package com.bookee.bookee.global.api;
 
-import com.bookee.bookee.global.config.exception.ExceptionCode;
+import com.bookee.bookee.global.exception.ExceptionCode;
 import org.springframework.stereotype.Service;
 
 @Service

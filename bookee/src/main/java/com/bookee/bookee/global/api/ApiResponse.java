@@ -1,4 +1,4 @@
-package com.bookee.bookee.global.config.api;
+package com.bookee.bookee.global.api;
 
 import lombok.Builder;
 import lombok.Getter;
