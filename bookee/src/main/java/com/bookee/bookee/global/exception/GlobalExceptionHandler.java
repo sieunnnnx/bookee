@@ -31,7 +31,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ApiResponse<?>> handleBadRequest(Exception e) {
 
         return ResponseEntity.ok(
-                apiResponseService.fail(ExceptionCode.BAD_REQUEST)
+                apiResponseService.fail(GlobalException.BAD_REQUEST)
         );
     }
 
@@ -42,7 +42,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ApiResponse<?>> handleNotFound(Exception e) {
 
         return ResponseEntity.ok(
-                apiResponseService.fail(ExceptionCode.NOT_FOUND)
+                apiResponseService.fail(GlobalException.NOT_FOUND)
         );
     }
 
@@ -52,7 +52,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<?>> handleException(Exception e) {
         return ResponseEntity.ok(
-                apiResponseService.fail(ExceptionCode.INTERNAL_SERVER_ERROR)
+                apiResponseService.fail(GlobalException.INTERNAL_SERVER_ERROR)
         );
     }
 }
