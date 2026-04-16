@@ -2,12 +2,14 @@ package com.bookee.bookee.domain.user.entity;
 
 import com.bookee.bookee.global.entity.BaseEntity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @Entity
 @NoArgsConstructor
+@Table(name = "users")
 public class User extends BaseEntity {
 
     private String loginId;
