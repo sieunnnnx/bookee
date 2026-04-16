@@ -2,6 +2,7 @@ package com.bookee.bookee.global.exception;
 
 import com.bookee.bookee.global.api.ApiResponse;
 import com.bookee.bookee.global.api.ApiResponseService;
+import com.bookee.bookee.global.api.BaseCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -20,8 +21,8 @@ public class GlobalExceptionHandler {
      * 비즈니스 예외
      */
     @ExceptionHandler(CustomException.class)
-    public ApiResponse<?> handleCustomException(CustomException e) {
-        return apiResponseService.fail(e.getExceptionCode());
+    public ApiResponse<?> handleCustomException(BaseCode e) {
+        return apiResponseService.fail(e);
     }
 
     /**
