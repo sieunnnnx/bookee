@@ -24,15 +24,18 @@ public class Quote extends BaseEntity {
 
 
     protected Quote(String content, Integer page, BookRecord bookRecord) {
+
         this.content = content;
         this.page = page;
         this.bookRecord = bookRecord;
     }
 
+
     /**
      * 글귀 생성
      */
     public static Quote create(String content, Integer page, BookRecord bookRecord) {
+
         return new Quote(content, page, bookRecord);
     }
 }
