@@ -1,14 +1,10 @@
 package com.bookee.bookee.global.api;
 
+import org.springframework.http.HttpStatus;
+
 public interface BaseCode {
 
-    /**
-     * 코드 값 반환
-     */
+    HttpStatus getHttpStatus();
     String getCode();
-
-    /**
-     * 메시지 반환
-     */
     String getMessage();
 }

@@ -3,20 +3,22 @@ package com.bookee.bookee.global.api;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ApiResponseService {
+public class ApiCommonResponseService {
 
-    public <T> ApiResponse<T> success(T data) {
-        return ApiResponse.<T>builder()
+    public <T> ApiCommonResponse<T> success(T data) {
+        return ApiCommonResponse.<T>builder()
                 .isSuccess(true)
+                .status(SuccessCode.SUCCESS.getHttpStatus())
                 .code(SuccessCode.SUCCESS.getCode())
                 .message(SuccessCode.SUCCESS.getMessage())
                 .data(data)
                 .build();
     }
 
-    public ApiResponse<?> fail(BaseCode baseCode) {
-        return ApiResponse.builder()
+    public ApiCommonResponse<?> fail(BaseCode baseCode) {
+        return ApiCommonResponse.builder()
                 .isSuccess(false)
+                .status(baseCode.getHttpStatus())
                 .code(baseCode.getCode())
                 .message(baseCode.getMessage())
                 .data(null)

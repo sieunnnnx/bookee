@@ -7,8 +7,8 @@ import com.bookee.bookee.domain.user.dto.SignUpRequest;
 import com.bookee.bookee.domain.user.dto.SignUpResponse;
 import com.bookee.bookee.domain.user.service.LoginService;
 import com.bookee.bookee.domain.user.service.SignUpService;
-import com.bookee.bookee.global.api.ApiResponse;
-import com.bookee.bookee.global.api.ApiResponseService;
+import com.bookee.bookee.global.api.ApiCommonResponse;
+import com.bookee.bookee.global.api.ApiCommonResponseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,26 +25,26 @@ public class UserController {
 
     private final SignUpService signUpService;
     private final LoginService loginService;
-    private final ApiResponseService apiResponseService;
+    private final ApiCommonResponseService apiCommonResponseService;
 
 
     /**
      * 회원가입 API
      */
     @PostMapping("/signup")
-    public ApiResponse<SignUpResponse> signUp(@RequestBody SignUpRequest request) {
+    public ApiCommonResponse<SignUpResponse> signUp(@RequestBody SignUpRequest request) {
         SignUpResponse response = signUpService.signUp(request);
 
-        return apiResponseService.success(response);
+        return apiCommonResponseService.success(response);
     }
 
     /**
      * 로그인 API
      */
     @PostMapping("/login")
-    public ApiResponse<LoginResponse> login(@RequestBody LoginRequest request) {
+    public ApiCommonResponse<LoginResponse> login(@RequestBody LoginRequest request) {
         LoginResponse response = loginService.login(request);
 
-        return apiResponseService.success(response);
+        return apiCommonResponseService.success(response);
     }
 }
