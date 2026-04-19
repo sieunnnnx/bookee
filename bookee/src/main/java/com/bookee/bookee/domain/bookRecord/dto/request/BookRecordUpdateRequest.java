@@ -1,6 +1,7 @@
 package com.bookee.bookee.domain.bookRecord.dto.request;
 
 import com.bookee.bookee.domain.book.dto.BookResponse;
+import com.bookee.bookee.domain.bookRecord.entity.ReadStatus;
 import lombok.Getter;
 
 import java.time.LocalDate;
@@ -10,6 +11,8 @@ import java.time.LocalDate;
 public class BookRecordUpdateRequest {
 
     private Long BookRecordId;
+
+    private ReadStatus readStatus;
 
     private LocalDate startedAt;
 
