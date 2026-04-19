@@ -22,6 +22,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(CustomException.class)
     public ApiResponse<?> handleCustomException(BaseCode e) {
+
         return apiResponseService.fail(e);
     }
 
@@ -52,8 +53,11 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<?>> handleException(Exception e) {
-        return ResponseEntity.ok(
-                apiResponseService.fail(GlobalException.INTERNAL_SERVER_ERROR)
-        );
+
+        e.printStackTrace();
+
+        return ResponseEntity
+                .status(GlobalException.INTERNAL_SERVER_ERROR.getHttpStatus())
+                .body(apiResponseService.fail(GlobalException.INTERNAL_SERVER_ERROR));
     }
 }
