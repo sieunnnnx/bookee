@@ -10,5 +10,5 @@ public class QuoteCreateRequest {
 
     private String content;
 
-    private String page;
+    private Long page;
 }

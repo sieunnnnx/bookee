@@ -16,5 +16,5 @@ public interface QuoteRepository extends JpaRepository<Quote, Long> {
     @NullMarked
     Optional<Quote> findByIdAndIsDeletedFalse(Long quoteId);
 
-    List<Quote> findByBookRecord_id(Long bookRecordId);
+    List<Quote> findByBookRecord_idAndIsDeletedFalse(Long bookRecordId);
 }

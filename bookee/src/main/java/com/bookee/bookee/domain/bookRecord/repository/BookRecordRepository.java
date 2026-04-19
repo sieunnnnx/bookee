@@ -16,5 +16,5 @@ public interface BookRecordRepository extends JpaRepository<BookRecord, Long> {
     @NullMarked
     Optional<BookRecord> findByIdAndIsDeletedFalse(Long bookRecordId);
 
-    List<BookRecord> findByUser_id(Long userId);
+    List<BookRecord> findByUser_idAndIsDeletedFalse(Long userId);
 }

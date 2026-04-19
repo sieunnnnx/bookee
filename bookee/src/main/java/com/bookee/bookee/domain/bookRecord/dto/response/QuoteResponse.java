@@ -15,9 +15,9 @@ public class QuoteResponse {
 
     private String content;
 
-    private Integer page;
+    private Long page;
 
-    private LocalDate createdTime;
+    private LocalDate createdAt;
 
 
     public static QuoteResponse from(Quote quote) {
@@ -26,7 +26,7 @@ public class QuoteResponse {
                 .quoteId(quote.getId())
                 .content(quote.getContent())
                 .page(quote.getPage())
-                .createdTime(quote.getCreatedAt().toLocalDate())
+                .createdAt(quote.getCreatedAt().toLocalDate())
                 .build();
     }
 }

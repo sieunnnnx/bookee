@@ -44,7 +44,7 @@ public class BookRecordService {
                 .orElseThrow(() -> new CustomException(UserException.USER_NOT_FOUND));
 
         return bookRecordRepository
-                .findByUser_id(user.getId())
+                .findByUser_idAndIsDeletedFalse(user.getId())
                 .stream()
                 .map(BookRecordListResponse::from)
                 .toList();
@@ -62,10 +62,10 @@ public class BookRecordService {
      * @throws CustomException 독서 기록이 존재하지 않는 경우
      */
     public BookRecordDetailResponse detail(Long bookRecordId) {
-        BookRecord bookRecord = bookRecordRepository.findById(bookRecordId)
+        BookRecord bookRecord = bookRecordRepository.findByIdAndIsDeletedFalse(bookRecordId)
                 .orElseThrow(() -> new CustomException(BookRecordException.BOOK_RECORD_NOT_FOUND));
 
-        List<Quote> quotes = quoteRepository.findByBookRecord_id(bookRecordId);
+        List<Quote> quotes = quoteRepository.findByBookRecord_idAndIsDeletedFalse(bookRecordId);
 
         return BookRecordDetailResponse.from(bookRecord, quotes);
     }
@@ -86,7 +86,7 @@ public class BookRecordService {
         User user = userRepository.findById(request.getUserId())
                 .orElseThrow(() -> new CustomException(UserException.USER_NOT_FOUND));
 
-        Book book = bookRepository.findById(request.getBookId())
+        Book book = bookRepository.findByIdAndIsDeletedFalse(request.getBookId())
                 .orElseThrow(() -> new CustomException(BookException.BOOK_NOT_FOUND));
 
         BookRecord bookRecord = bookRecordRepository.save(
@@ -99,7 +99,8 @@ public class BookRecordService {
                         request.getRating(),
                         request.getReviewTitle(),
                         request.getReviewContent()
-                        ));
+                )
+        );
 
         return bookRecord.getId();
     }
@@ -112,7 +113,7 @@ public class BookRecordService {
      * @throws CustomException 독서 기록이 존재하지 않는 경우
      */
     public Long update(BookRecordUpdateRequest request) {
-        BookRecord bookRecord = bookRecordRepository.findById(request.getBookRecordId())
+        BookRecord bookRecord = bookRecordRepository.findByIdAndIsDeletedFalse(request.getBookRecordId())
                 .orElseThrow(() -> new CustomException(BookRecordException.BOOK_RECORD_NOT_FOUND));
 
         bookRecord.update(
@@ -145,7 +146,7 @@ public class BookRecordService {
      */
     public void delete(Long userId, Long bookRecordId) {
 
-        BookRecord bookRecord = bookRecordRepository.findById(bookRecordId)
+        BookRecord bookRecord = bookRecordRepository.findByIdAndIsDeletedFalse(bookRecordId)
                 .orElseThrow(() -> new CustomException(BookRecordException.BOOK_RECORD_NOT_FOUND));
 
         if (!bookRecord.getUser().getId().equals(userId))

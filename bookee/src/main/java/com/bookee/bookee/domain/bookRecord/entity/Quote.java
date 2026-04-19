@@ -15,7 +15,7 @@ public class Quote extends BaseEntity {
 
     private String content;
 
-    private Integer page;
+    private Long page;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -23,7 +23,7 @@ public class Quote extends BaseEntity {
     private BookRecord bookRecord;
 
 
-    protected Quote(String content, Integer page, BookRecord bookRecord) {
+    protected Quote(String content, Long page, BookRecord bookRecord) {
 
         this.content = content;
         this.page = page;
@@ -34,8 +34,16 @@ public class Quote extends BaseEntity {
     /**
      * 글귀 생성
      */
-    public static Quote create(String content, Integer page, BookRecord bookRecord) {
+    public static Quote create(String content, Long page, BookRecord bookRecord) {
 
         return new Quote(content, page, bookRecord);
+    }
+
+    /**
+     * 글귀 수정
+     */
+    public void update(String content, Long page) {
+        this.content = content;
+        this.page = page;
     }
 }
