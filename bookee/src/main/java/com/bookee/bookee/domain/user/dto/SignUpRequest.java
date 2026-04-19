@@ -7,6 +7,8 @@ import lombok.Getter;
 public class SignUpRequest {
 
     private String loginId;
+
     private String password;
+
     private String nickname;
 }

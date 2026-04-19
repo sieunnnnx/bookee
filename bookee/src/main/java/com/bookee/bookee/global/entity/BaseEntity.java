@@ -29,4 +29,9 @@ public abstract class BaseEntity {
     private Long updatedBy;
 
     private Boolean isDeleted = false;
+
+
+    public void delete() {
+        this.isDeleted = true;
+    }
 }

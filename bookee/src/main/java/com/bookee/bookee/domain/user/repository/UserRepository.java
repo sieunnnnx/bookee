@@ -1,6 +1,7 @@
 package com.bookee.bookee.domain.user.repository;
 
 import com.bookee.bookee.domain.user.entity.User;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +12,11 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByLoginId(String loginId);
+
     boolean existsByNickname(String nickname);
+
     Optional<User> findByLoginId(String loginId);
+
+    @NullMarked
+    Optional<User> findById(Long userId);
 }

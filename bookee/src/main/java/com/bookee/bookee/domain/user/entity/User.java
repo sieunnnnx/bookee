@@ -25,7 +25,6 @@ public class User extends BaseEntity {
      * @param loginId 로그인 아이디
      * @param password 비밀번호
      * @param nickname 닉네임
-     * @param email 이메일
      */
     protected User(String loginId, String password, String nickname) {
         this.loginId = loginId;

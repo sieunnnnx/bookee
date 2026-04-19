@@ -9,6 +9,8 @@ import lombok.Getter;
 public class SignUpResponse {
 
     private Long userId;
+
     private String loginId;
+
     private String nickname;
 }
