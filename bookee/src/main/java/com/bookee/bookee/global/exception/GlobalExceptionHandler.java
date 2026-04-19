@@ -30,34 +30,26 @@ public class GlobalExceptionHandler {
      * 잘못된 요청
      */
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<ApiResponse<?>> handleBadRequest(Exception e) {
+    public ApiResponse<?> handleBadRequest() {
 
-        return ResponseEntity.ok(
-                apiResponseService.fail(GlobalException.BAD_REQUEST)
-        );
+        return apiResponseService.fail(GlobalException.BAD_REQUEST);
     }
 
     /**
      * 리소스 없음
      */
     @ExceptionHandler(java.util.NoSuchElementException.class)
-    public ResponseEntity<ApiResponse<?>> handleNotFound(Exception e) {
+    public ApiResponse<?> handleNotFound() {
 
-        return ResponseEntity.ok(
-                apiResponseService.fail(GlobalException.NOT_FOUND)
-        );
+        return apiResponseService.fail(GlobalException.NOT_FOUND);
     }
 
     /**
      * 예상하지 못한 서버 에러
      */
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ApiResponse<?>> handleException(Exception e) {
+    public ApiResponse<?> handleException() {
 
-        e.printStackTrace();
-
-        return ResponseEntity
-                .status(GlobalException.INTERNAL_SERVER_ERROR.getHttpStatus())
-                .body(apiResponseService.fail(GlobalException.INTERNAL_SERVER_ERROR));
+        return apiResponseService.fail(GlobalException.INTERNAL_SERVER_ERROR);
     }
 }
